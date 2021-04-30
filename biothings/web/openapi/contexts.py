@@ -178,6 +178,9 @@ class OpenAPIContext(_HasExternalDocs):
             path_item.description(description)
         self.document['paths'][path] = path_item.document
         return path_item
+    
+    def __str__(self):
+        return str(self.document)
 
 
 class OpenAPIInfoContext(_ChildContext, _HasDescription):
@@ -230,11 +233,20 @@ class OpenAPIOperation(_ChildContext, _HasSummary, _HasExternalDocs, _HasTags,
         super(OpenAPIOperation, self).__init__(parent)
         self.document = {
             'responses': {
-                '200': {
-                    'description': "Success",
-                }
+                # '200': {
+                #     'description': "Success",
+                # }
             }
         }
+    
+    def response_code(self, code: str, description: str):
+        try:
+            convert_code = int(code)
+        except ValueError:
+            raise ValueError()  
+
+        self.document['responses'][code] = description
+        return self
 
 
 class OpenAPIParameterContext(_ChildContext, _HasDescription):
