@@ -1,0 +1,83 @@
+{
+    "openapi": "3.0.3",
+    "paths": {
+        "/ontologies/doid/children": {
+            "get": {
+                "responses": {
+                    "200": "Put Disease Ontology ID here, e.g. DOID:0050686"
+                },
+                "summary": "retrieve the children of specified ontology terms",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Ontology Lookup Service API",
+        "version": "1.0",
+        "description": "The OLS REST API provides access to key biological data from OLS.    The services provide a unified interface to query information about ontology terms    from GO (the Gene Ontology) and ECO (the Evidence & Conclusion Ontology), Gene    Ontology annotations from the EBIs GOA database, and gene products (proteins    from UniProt, RNA from RNAcentral and complexes from ComplexPortal). ",
+        "termsOfService": "https://www.ebi.ac.uk/OLS/services",
+        "contact": {
+            "name": "pharmgkb help desk",
+            "email": "help@pharmgkb.org",
+            "url": "https://github.com/newgene"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://www.ebi.ac.uk/ols/api",
+            "description": "Production server"
+        }
+    ]
+}
+
+
+
+
+{
+    "openapi": "3.0.3",
+    "paths": {
+        "/genes/{geneid}": {
+            "get": {
+                "responses": {
+                    "200": "A RGD object"
+                },
+                "summary": "retrieve rgd data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "RGD API",
+        "version": "1.0",
+        "description": "The RGD API",
+        "termsOfService": "http://www.rgd.org",
+        "contact": {
+            "name": "rgd help desk",
+            "email": "help@rgd.org"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://rest.rgd.mcw.edu/rgdws",
+            "description": "Production server"
+        }
+    ]
+}

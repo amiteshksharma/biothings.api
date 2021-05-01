@@ -1,4 +1,5 @@
 from typing import Optional, MutableMapping, Type
+import json
 
 
 class _BaseMetaClass(type):
@@ -180,7 +181,7 @@ class OpenAPIContext(_HasExternalDocs):
         return path_item
     
     def __str__(self):
-        return str(self.document)
+        return json.dumps(self.document, indent=4)
 
 
 class OpenAPIInfoContext(_ChildContext, _HasDescription):
@@ -233,9 +234,9 @@ class OpenAPIOperation(_ChildContext, _HasSummary, _HasExternalDocs, _HasTags,
         super(OpenAPIOperation, self).__init__(parent)
         self.document = {
             'responses': {
-                # '200': {
-                #     'description': "Success",
-                # }
+                '200': {
+                    'description': "Success",
+                }
             }
         }
     
